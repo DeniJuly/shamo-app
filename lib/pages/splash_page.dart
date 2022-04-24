@@ -22,13 +22,16 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       backgroundColor: bgColor1,
       body: Center(
-          child: Container(
-        width: 130,
-        height: 150,
-        decoration: BoxDecoration(
-            image:
-                DecorationImage(image: AssetImage('assets/images/logo.png'))),
-      )),
+        child: Container(
+          width: 130,
+          height: 150,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/logo.png'),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

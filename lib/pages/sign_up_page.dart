@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_app/config/theme.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +13,14 @@ class SignInPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Login',
+              'Sign Up',
               style: primaryTextStyle.copyWith(
                 fontSize: 24,
                 fontWeight: semiBold,
               ),
             ),
             Text(
-              'Sign In to Countinue',
+              'Register and Happy Shoping',
               style: subtitleTextStyle.copyWith(
                 fontSize: 14,
               ),
@@ -30,9 +30,111 @@ class SignInPage extends StatelessWidget {
       );
     }
 
+    Widget nameInput() {
+      return Container(
+        margin: EdgeInsets.only(top: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Full Name',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              decoration: BoxDecoration(
+                color: bgColor2,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icons/ic_person.png',
+                      width: 17,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Fullname',
+                          hintStyle: subtitleTextStyle.copyWith(fontSize: 14),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+    }
+
+    Widget usernameInput() {
+      return Container(
+        margin: EdgeInsets.only(top: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Username',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              decoration: BoxDecoration(
+                color: bgColor2,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icons/ic_username.png',
+                      width: 17,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Username',
+                          hintStyle: subtitleTextStyle.copyWith(fontSize: 14),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+    }
+
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 70),
+        margin: EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -159,12 +261,12 @@ class SignInPage extends StatelessWidget {
 
     Widget footer() {
       return Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: EdgeInsets.only(bottom: 30, top: 50),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Don\'t have an account?',
+              'Already have an account?',
               style: primaryTextStyle.copyWith(
                 fontSize: 12,
               ),
@@ -174,10 +276,10 @@ class SignInPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/sign-up');
+                Navigator.pop(context);
               },
               child: Text(
-                'Sign up',
+                'Sign In',
                 style: purpleTextStyle.copyWith(
                   fontSize: 12,
                   fontWeight: medium,
@@ -191,21 +293,24 @@ class SignInPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: bgColor1,
-      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Container(
+        child: SingleChildScrollView(
+          child: Container(
             margin: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 header(),
+                nameInput(),
+                usernameInput(),
                 emailInput(),
                 passwordInput(),
                 signInButton(),
-                Spacer(),
                 footer()
               ],
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }
