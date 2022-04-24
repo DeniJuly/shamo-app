@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shamo_app/config/theme.dart';
+import 'package:shamo_app/pages/home/main_page.dart';
 import 'package:shamo_app/pages/sign_in_page.dart';
 import 'package:shamo_app/pages/sign_up_page.dart';
 import 'package:shamo_app/pages/splash_page.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashPage(),
         '/sign-in': (context) => SignInPage(),
         '/sign-up': (context) => SignUpPage(),
+        '/home': (context) => MainPage(),
       },
     );
   }

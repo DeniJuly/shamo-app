@@ -10,15 +10,20 @@ Color priceColor = Color(0xff2C96F1);
 Color bgColor1 = Color(0xff1F1D2B);
 Color bgColor2 = Color(0xff2B2937);
 Color bgColor3 = Color(0xff242231);
+Color bgColor4 = Color(0xff252836);
 Color primaryTextColor = Color(0xffF1F0F2);
 Color secondaryTextColor = Color(0xff999999);
 Color subtitleTextColor = Color(0xff504F5E);
+Color bottomNavColor = Color(0xff808191);
+Color borderColor = Color(0xff302F37);
+Color blackColor = Color(0xff2E2E2E);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 TextStyle secondaryTextStyle = GoogleFonts.poppins(color: secondaryTextColor);
 TextStyle subtitleTextStyle = GoogleFonts.poppins(color: subtitleTextColor);
 TextStyle priceTextStyle = GoogleFonts.poppins(color: priceColor);
 TextStyle purpleTextStyle = GoogleFonts.poppins(color: primaryColor);
+TextStyle blackColorStyle = GoogleFonts.poppins(color: blackColor);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
