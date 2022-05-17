@@ -12,12 +12,15 @@ Color bgColor2 = Color(0xff2B2937);
 Color bgColor3 = Color(0xff242231);
 Color bgColor4 = Color(0xff252836);
 Color bgColor5 = Color(0xff2B2844);
+Color bgColor6 = Color(0xffECEDEF);
 Color primaryTextColor = Color(0xffF1F0F2);
 Color secondaryTextColor = Color(0xff999999);
 Color subtitleTextColor = Color(0xff504F5E);
 Color bottomNavColor = Color(0xff808191);
 Color borderColor = Color(0xff302F37);
 Color blackColor = Color(0xff2E2E2E);
+Color carouselColor = Color(0xffC4C4C4);
+Color errorColor = Color(0xffED6363);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 TextStyle secondaryTextStyle = GoogleFonts.poppins(color: secondaryTextColor);
