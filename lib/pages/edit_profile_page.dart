@@ -117,8 +117,8 @@ class EditProfile extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      appBar: AppBar(
+    PreferredSizeWidget header() {
+      return AppBar(
         backgroundColor: bgColor1,
         centerTitle: true,
         elevation: 0,
@@ -147,7 +147,11 @@ class EditProfile extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      );
+    }
+
+    return Scaffold(
+      appBar: header(),
       backgroundColor: bgColor3,
       body: content(),
       resizeToAvoidBottomInset: false,

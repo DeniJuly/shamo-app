@@ -46,9 +46,14 @@ class _ProductPageState extends State<ProductPage> {
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Icon(
-                      Icons.close,
-                      color: primaryTextColor,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.close,
+                        color: primaryTextColor,
+                      ),
                     ),
                   ),
                   Image.asset(
