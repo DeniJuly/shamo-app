@@ -97,7 +97,7 @@ class CartPage extends StatelessWidget {
 
     Widget customButtomNav() {
       return Container(
-        height: 165,
+        height: 180,
         child: Column(
           children: [
             Container(
@@ -137,7 +137,9 @@ class CartPage extends StatelessWidget {
                 horizontal: defaultMargin,
               ),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/checkout');
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: primaryColor,
                   padding: EdgeInsets.symmetric(
@@ -164,7 +166,10 @@ class CartPage extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       );
