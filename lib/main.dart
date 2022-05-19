@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shamo_app/config/theme.dart';
 import 'package:shamo_app/pages/cart_page.dart';
 import 'package:shamo_app/pages/checkout_page.dart';
+import 'package:shamo_app/pages/checkout_success.dart';
 import 'package:shamo_app/pages/detail_chat_page.dart';
 import 'package:shamo_app/pages/edit_profile_page.dart';
 import 'package:shamo_app/pages/home/main_page.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/product': (context) => ProductPage(),
         '/cart': (context) => CartPage(),
         '/checkout': (context) => CheckoutPage(),
+        '/checkout-success': (context) => CheckoutSuccessPage(),
       },
     );
   }
