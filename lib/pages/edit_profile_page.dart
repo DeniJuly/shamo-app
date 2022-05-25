@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shamo_app/config/theme.dart';
+import 'package:shamo_app/models/user_model.dart';
+import 'package:shamo_app/providers/auth_provider.dart';
 
 class EditProfile extends StatelessWidget {
   const EditProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
     Widget nameInput() {
       return Container(
         margin: EdgeInsets.only(
@@ -21,7 +26,7 @@ class EditProfile extends StatelessWidget {
             TextFormField(
               style: primaryTextStyle,
               decoration: InputDecoration(
-                hintText: 'Nama Anda',
+                hintText: user.name,
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -50,7 +55,7 @@ class EditProfile extends StatelessWidget {
             TextFormField(
               style: primaryTextStyle,
               decoration: InputDecoration(
-                hintText: 'Usernama Anda',
+                hintText: user.username,
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -79,7 +84,7 @@ class EditProfile extends StatelessWidget {
             TextFormField(
               style: primaryTextStyle,
               decoration: InputDecoration(
-                hintText: 'Email Anda',
+                hintText: user.email,
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -103,10 +108,16 @@ class EditProfile extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            ClipOval(
-              child: Image.asset(
-                'assets/images/profile.png',
-                width: 100,
+            Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(user.profilePhotoUrl ??
+                      'https://source.unsplash.com/random'),
+                ),
               ),
             ),
             nameInput(),
