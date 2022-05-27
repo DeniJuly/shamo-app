@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shamo_app/config/theme.dart';
+import 'package:shamo_app/models/cart_model.dart';
+import 'package:shamo_app/providers/cart_provider.dart';
 
 class CartCard extends StatelessWidget {
-  const CartCard({Key? key}) : super(key: key);
-
+  final CartModel cart;
+  CartCard(this.cart);
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     return Container(
       margin: EdgeInsets.only(
         top: defaultMargin,
@@ -24,8 +28,9 @@ class CartCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(12.0),
-                child: Image.asset(
-                  'assets/images/sepatu.png',
+                child: Image.network(
+                  cart.product!.galleries![0].url ??
+                      'https://source.unsplash.com/random',
                   width: 60,
                   height: 60,
                 ),
@@ -38,13 +43,13 @@ class CartCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Terrex Urban Low',
+                      cart.product!.name ?? 'Name',
                       style: primaryTextStyle.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     Text(
-                      '\$143,98',
+                      '\$${cart.product!.price}',
                       style: priceTextStyle,
                     ),
                   ],
@@ -55,16 +60,21 @@ class CartCard extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Image.asset(
-                    'assets/icons/btn_add.png',
-                    width: 16,
-                    height: 16,
+                  GestureDetector(
+                    onTap: () {
+                      cartProvider.addQuantify(cart.id ?? 0);
+                    },
+                    child: Image.asset(
+                      'assets/icons/btn_add.png',
+                      width: 16,
+                      height: 16,
+                    ),
                   ),
                   SizedBox(
                     height: 2,
                   ),
                   Text(
-                    '2',
+                    cart.quantity.toString(),
                     style: primaryTextStyle.copyWith(
                       fontWeight: medium,
                     ),
@@ -72,10 +82,15 @@ class CartCard extends StatelessWidget {
                   SizedBox(
                     height: 2,
                   ),
-                  Image.asset(
-                    'assets/icons/btn_min.png',
-                    width: 16,
-                    height: 16,
+                  GestureDetector(
+                    onTap: () {
+                      cartProvider.reduceQuantify(cart.id ?? 0);
+                    },
+                    child: Image.asset(
+                      'assets/icons/btn_min.png',
+                      width: 16,
+                      height: 16,
+                    ),
                   ),
                 ],
               )
@@ -84,25 +99,30 @@ class CartCard extends StatelessWidget {
           SizedBox(
             height: 12,
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.delete_outline,
-                color: errorColor,
-                size: 16,
-              ),
-              SizedBox(
-                width: 4,
-              ),
-              Text(
-                'Remove',
-                style: errorColorStyle.copyWith(
-                  fontSize: 12,
-                  fontWeight: light,
+          GestureDetector(
+            onTap: () {
+              cartProvider.removeCart(cart.id ?? 0);
+            },
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.delete_outline,
+                  color: errorColor,
+                  size: 16,
                 ),
-              )
-            ],
+                SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  'Remove',
+                  style: errorColorStyle.copyWith(
+                    fontSize: 12,
+                    fontWeight: light,
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

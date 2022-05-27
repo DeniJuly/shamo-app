@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shamo_app/config/theme.dart';
+import 'package:shamo_app/models/product_model.dart';
+import 'package:shamo_app/providers/wishlist_provider.dart';
 
 class LoveCard extends StatelessWidget {
-  const LoveCard({Key? key}) : super(key: key);
+  final ProductModel product;
+  LoveCard(this.product);
 
   @override
   Widget build(BuildContext context) {
+    WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
     return Container(
       margin: EdgeInsets.only(
         top: 20,
@@ -22,8 +27,8 @@ class LoveCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              'assets/images/sepatu.png',
+            child: Image.network(
+              product.galleries![0].url ?? 'https://source.unsplash.com/random',
               width: 60,
             ),
           ),
@@ -35,13 +40,13 @@ class LoveCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Terrex Urban Low',
+                  product.name ?? 'Name',
                   style: primaryTextStyle.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
-                  '\$143,98',
+                  '\$${product.price}',
                   style: priceTextStyle,
                 ),
               ],
@@ -50,9 +55,12 @@ class LoveCard extends StatelessWidget {
           SizedBox(
             width: 12,
           ),
-          Image.asset(
-            'assets/icons/btn_love_green.png',
-            width: 34,
+          GestureDetector(
+            onTap: () => wishlistProvider.setProduct(product),
+            child: Image.asset(
+              'assets/icons/btn_love_green.png',
+              width: 34,
+            ),
           ),
           SizedBox(
             width: 8,

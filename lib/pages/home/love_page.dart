@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shamo_app/config/theme.dart';
+import 'package:shamo_app/providers/wishlist_provider.dart';
 import 'package:shamo_app/widgets/love_card.dart';
 
 class LovePage extends StatelessWidget {
@@ -7,6 +9,7 @@ class LovePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
     Widget header() {
       return AppBar(
         backgroundColor: bgColor1,
@@ -89,9 +92,7 @@ class LovePage extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: defaultMargin,
           ),
-          children: [
-            LoveCard(),
-          ],
+          children: wishlistProvider.wishlist.map((e) => LoveCard(e)).toList(),
         ),
       );
     }
@@ -99,8 +100,7 @@ class LovePage extends StatelessWidget {
     return Column(
       children: [
         header(),
-        // emptyData(),
-        content(),
+        wishlistProvider.wishlist.length <= 0 ? emptyData() : content(),
       ],
     );
   }
