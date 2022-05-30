@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "442396058939",
+    "project_id": "shamo-1bdba",
+    "storage_bucket": "shamo-1bdba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442396058939:android:48fe1d731e93825ed8c31e",
+        "android_client_info": {
+          "package_name": "com.deni.shamo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442396058939-62uv91rm1ip0skrlgjd3ddgah7v2idn4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACE1yta5km2-JUkZJ0KhamGYIKVJP3qWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442396058939-62uv91rm1ip0skrlgjd3ddgah7v2idn4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

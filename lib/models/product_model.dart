@@ -46,10 +46,12 @@ class ProductModel {
       'price': price,
       'description': description,
       'tags': tags,
-      'category': category,
-      'created_at': createdAt,
-      'updated_at': updatedAt,
-      'galleries': galleries,
+      'category': category!.toJson(),
+      'created_at': createdAt.toString(),
+      'updated_at': updatedAt.toString(),
+      'galleries': galleries!.map((e) => e.toJson()).toList(),
     };
   }
 }
+
+class UninitializeProductModel extends ProductModel {}

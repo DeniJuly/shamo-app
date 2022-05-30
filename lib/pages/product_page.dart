@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo_app/config/theme.dart';
 import 'package:shamo_app/models/product_model.dart';
+import 'package:shamo_app/pages/detail_chat_page.dart';
 import 'package:shamo_app/providers/cart_provider.dart';
 import 'package:shamo_app/providers/wishlist_provider.dart';
 
@@ -371,7 +372,13 @@ class _ProductPageState extends State<ProductPage> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/detail-chat');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    DetailChatPage(widget.product),
+                              ),
+                            );
                           },
                           child: Image.asset(
                             'assets/icons/btn_chat.png',

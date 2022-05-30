@@ -1,14 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:shamo_app/config/theme.dart';
 import 'package:shamo_app/pages/cart_page.dart';
 import 'package:shamo_app/pages/checkout_page.dart';
 import 'package:shamo_app/pages/checkout_success.dart';
-import 'package:shamo_app/pages/detail_chat_page.dart';
 import 'package:shamo_app/pages/edit_profile_page.dart';
 import 'package:shamo_app/pages/home/main_page.dart';
-import 'package:shamo_app/pages/product_page.dart';
 import 'package:shamo_app/pages/sign_in_page.dart';
 import 'package:shamo_app/pages/sign_up_page.dart';
 import 'package:shamo_app/pages/splash_page.dart';
@@ -18,7 +16,11 @@ import 'package:shamo_app/providers/product_provider.dart';
 import 'package:shamo_app/providers/transaction_provider.dart';
 import 'package:shamo_app/providers/wishlist_provider.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -40,7 +42,6 @@ class MyApp extends StatelessWidget {
           '/sign-in': (context) => SignInPage(),
           '/sign-up': (context) => SignUpPage(),
           '/home': (context) => MainPage(),
-          '/detail-chat': (context) => DetailChatPage(),
           '/edit-profile': (context) => EditProfile(),
           '/cart': (context) => CartPage(),
           '/checkout': (context) => CheckoutPage(),
