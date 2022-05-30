@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo_app/config/theme.dart';
+import 'package:shamo_app/providers/page_provider.dart';
 import 'package:shamo_app/providers/wishlist_provider.dart';
 import 'package:shamo_app/widgets/love_card.dart';
 
@@ -10,6 +11,7 @@ class LovePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
     Widget header() {
       return AppBar(
         backgroundColor: bgColor1,
@@ -61,7 +63,9 @@ class LovePage extends StatelessWidget {
               Container(
                 height: 44,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    pageProvider.currentIndex = 0;
+                  },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.symmetric(
                       horizontal: 24,

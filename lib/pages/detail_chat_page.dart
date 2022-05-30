@@ -222,11 +222,11 @@ class _DetailChatPageState extends State<DetailChatPage> {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: bgColor3,
       appBar: header(),
       bottomNavigationBar: chatInput(),
       body: content(),
-      resizeToAvoidBottomInset: false,
     );
   }
 }
